@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 1031065293}
   - component: {fileID: 1031065292}
   m_Layer: 5
-  m_Name: X
+  m_Name: Home
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -321,7 +321,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 628991321}
         m_TargetAssemblyTypeName: SceneManager, Assembly-CSharp
-        m_MethodName: X
+        m_MethodName: Home
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -8,7 +8,7 @@ public class SoundManager : MonoBehaviour
     private static SoundManager _instance;
     public static SoundManager Instance => _instance;
 
-    public new List<AudioClip> audio = new List<AudioClip>();
+    public AudioClip[] audio;
 
     private void Awake()
     {
@@ -21,5 +21,14 @@ public class SoundManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+    
+    public void SetAudio(float value)
+    {
+        foreach (AudioClip music in audio)
+        {
+            
+        }
+        AudioListener.volume = value;
     }
 }

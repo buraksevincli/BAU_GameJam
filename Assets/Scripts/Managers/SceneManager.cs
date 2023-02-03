@@ -5,14 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class SceneManager : MonoBehaviour
 {
+    [SerializeField] private GameObject _volumeBar;
+    [SerializeField] private GameObject _volumeBarActive;
+    [SerializeField] private GameObject _volumeBarDeactive;
+    
     public void StartGame()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("..");
-    }
-
-    public void Tutorial()
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("TutorialScene");
     }
 
     public void Credits()
@@ -20,18 +19,27 @@ public class SceneManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("CreditsScene");
     }
 
-    public void Options()
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("OptionScene");
-    }
-
     public void Exit()
     {
         Application.Quit();
     }
 
-    public void X()
+    public void Home()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
+    }
+
+    public void VolumeBarActive()
+    {
+        _volumeBar.SetActive(true);
+        _volumeBarActive.SetActive(false);
+        _volumeBarDeactive.SetActive(true);
+    }
+
+    public void VolumeBarDeactive()
+    {
+        _volumeBar.SetActive(false);
+        _volumeBarActive.SetActive(true);
+        _volumeBarDeactive.SetActive(false);
     }
 }
