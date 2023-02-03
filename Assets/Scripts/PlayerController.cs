@@ -20,14 +20,20 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D _rb2d;
     Animator _anim;
     SpriteRenderer _spriteR;
+    CapsuleCollider2D _capCollider2D;
+
+    float rightOffset;
 
     void Start()
     {
         _rb2d = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
         _spriteR = GetComponent<SpriteRenderer>();
+        _capCollider2D = GetComponent<CapsuleCollider2D>();
 
         _currentSpeed = speed;
+
+        rightOffset = _capCollider2D.offset.x;
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -55,11 +61,13 @@ public class PlayerController : MonoBehaviour
         {
             moveDirection = -1;
             _spriteR.flipX = true;
+            _capCollider2D.offset = new Vector2(-rightOffset, _capCollider2D.offset.y);
         }
         else if (!slide && Input.GetKey(KeyCode.D))
         {
             moveDirection = 1;
             _spriteR.flipX = false;
+            _capCollider2D.offset = new Vector2(rightOffset, _capCollider2D.offset.y);
         }
 
         if (grounded && !shoot && !melee)
@@ -68,7 +76,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.S))
                 {
-                    StartCoroutine(SlideDelay());
+                    StartCoroutine(SlideDelayLeft());
                 }
                 else if (!slide)
                 {
@@ -81,7 +89,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.S))
                 {
-                    StartCoroutine(SlideDelay());
+                    StartCoroutine(SlideDelayRight());
                 }
                 else if (!slide)
                 {
@@ -124,7 +132,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    IEnumerator SlideDelay()
+    IEnumerator SlideDelayRight()
     {
         if (!slide)
         {
@@ -132,10 +140,33 @@ public class PlayerController : MonoBehaviour
             _currentSpeed = speed + (speed / 3f);
             _anim.SetBool("Run", false);
             _anim.SetBool("Slide", true);
+            _capCollider2D.offset = new Vector2(-0.97f, -0.9449035f);
+            _capCollider2D.size = new Vector2(2.96f, 3.008193f);
             yield return new WaitForSeconds(0.6f);
             _anim.SetBool("Slide", false);
             slide = false;
             _currentSpeed = speed;
+            _capCollider2D.offset = new Vector2(-0.4729044f, 0.02565622f);
+            _capCollider2D.size = new Vector2(1.970398f, 4.938585f);
+        }
+    }
+
+    IEnumerator SlideDelayLeft()
+    {
+        if (!slide)
+        {
+            slide = true;
+            _currentSpeed = speed + (speed / 3f);
+            _anim.SetBool("Run", false);
+            _anim.SetBool("Slide", true);
+            _capCollider2D.offset = new Vector2(0.97f, -0.9449035f);
+            _capCollider2D.size = new Vector2(2.96f, 3.008193f);
+            yield return new WaitForSeconds(0.6f);
+            _anim.SetBool("Slide", false);
+            slide = false;
+            _currentSpeed = speed;
+            _capCollider2D.offset = new Vector2(-0.4729044f, 0.02565622f);
+            _capCollider2D.size = new Vector2(1.970398f, 4.938585f);
         }
     }
 
