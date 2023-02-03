@@ -4,18 +4,25 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject square;
-
+    [SerializeField] private GameObject _root;
+    bool doOnce;
     private void Start()
     {
-        InvokeRepeating(nameof(Spawn), 5f, 1f);
+        doOnce = true;
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player")&& doOnce)
+        {
+            doOnce = false;
+            Spawn();
+        }
     }
 
     void Spawn()
     {
-        Instantiate(square, transform.position, Quaternion.identity);
-
+        Instantiate(_root, transform.position, Quaternion.identity);
     }
-
-
 }
