@@ -36,7 +36,6 @@ public class PlayerController : MonoBehaviour
 
         if (jump)
         {
-            grounded = false;
             _rb2d.velocity = new Vector2(_rb2d.velocity.x, jumpForce);
             jump = false;
         }
@@ -44,6 +43,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(grounded);
         if (grounded)
         {
             if (Input.GetKey(KeyCode.A))
@@ -60,10 +60,6 @@ public class PlayerController : MonoBehaviour
                 _anim.SetBool("Idle", false);
                 _anim.SetBool("Run", true);
             }
-            else if (Input.GetKeyDown(KeyCode.W))
-            {
-
-            }
             else
             {
                 moveDirection = 0;
@@ -75,7 +71,12 @@ public class PlayerController : MonoBehaviour
         {
 
         }
-        
+
+        if (grounded && Input.GetKeyDown(KeyCode.W))
+        {
+            jump = true;
+            grounded = false;
+        }
 
 
     }
