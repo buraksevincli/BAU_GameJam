@@ -34,6 +34,9 @@ public class PlayerController : MonoBehaviour
     bool rightSlash;
     bool leftSlash;
 
+    [SerializeField] GameObject pofEffect;
+    GameObject instantiatedPof;
+
 
 
     void Start()
@@ -55,6 +58,8 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             grounded = true;
+            instantiatedPof = Instantiate(pofEffect, new Vector3(transform.position.x, transform.position.y - 1, transform.position.z), Quaternion.identity);
+            Destroy(instantiatedPof, 0.5f);
         }
         else if (collision.gameObject.CompareTag("Enemy"))
         {
