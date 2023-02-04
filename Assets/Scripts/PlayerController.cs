@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     float _currentSpeed;
     public float jumpForce;
     int moveDirection;
+    Vector3 rightScale;
+    Vector3 leftScale;
 
     bool jump = false;
     bool slide = false;
@@ -16,6 +18,8 @@ public class PlayerController : MonoBehaviour
     bool canShoot = true;
     bool melee = false;
     bool canMelee = true;
+
+    bool isDead = false;
 
     Rigidbody2D _rb2d;
     Animator _anim;
@@ -33,6 +37,9 @@ public class PlayerController : MonoBehaviour
 
         _currentSpeed = speed;
 
+        rightScale = transform.localScale;
+        leftScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+
         rightOffset = _capCollider2D.offset.x;
     }
 
@@ -42,7 +49,12 @@ public class PlayerController : MonoBehaviour
         {
             grounded = true;
         }
+        else if (collision.gameObject.CompareTag("Enemy"))
+        {
+            isDead = true;
+        }
     }
+
 
     private void FixedUpdate()
     {
@@ -57,80 +69,97 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (!slide && Input.GetKey(KeyCode.A))
+        if (!isDead)
         {
-            moveDirection = -1;
-            _spriteR.flipX = true;
-            _capCollider2D.offset = new Vector2(-rightOffset, _capCollider2D.offset.y);
-        }
-        else if (!slide && Input.GetKey(KeyCode.D))
-        {
-            moveDirection = 1;
-            _spriteR.flipX = false;
-            _capCollider2D.offset = new Vector2(rightOffset, _capCollider2D.offset.y);
-        }
-        else if (!slide)
-        {
-            moveDirection = 0;
-        }
-
-        if (grounded && Input.GetKeyDown(KeyCode.W))
-        {
-            jump = true;
-            grounded = false;
-            if (!shoot && !melee)
+            if (!slide && Input.GetKey(KeyCode.A))
             {
-                _anim.SetBool("Idle", false);
-                _anim.SetBool("Run", false);
-                _anim.SetBool("Jump", true);
+                moveDirection = -1;
+                _spriteR.flipX = true;
+                //transform.localScale = leftScale;
+                _capCollider2D.offset = new Vector2(-rightOffset, _capCollider2D.offset.y);
             }
-        }
-
-        if (grounded && !shoot && !melee)
-        {
-            if (Input.GetKey(KeyCode.A))
+            else if (!slide && Input.GetKey(KeyCode.D))
             {
-                if (Input.GetKeyDown(KeyCode.S))
-                {
-                    StartCoroutine(SlideDelayLeft());
-                }
-                else if (!slide)
-                {
-                    _anim.SetBool("Idle", false);
-                    _anim.SetBool("Jump", false);
-                    _anim.SetBool("Run", true);
-                }
-            }
-            else if (Input.GetKey(KeyCode.D))
-            {
-                if (Input.GetKeyDown(KeyCode.S))
-                {
-                    StartCoroutine(SlideDelayRight());
-                }
-                else if (!slide)
-                {
-                    _anim.SetBool("Idle", false);
-                    _anim.SetBool("Jump", false);
-                    _anim.SetBool("Run", true);
-                }
+                moveDirection = 1;
+                _spriteR.flipX = false;
+                //transform.localScale = rightScale;
+                _capCollider2D.offset = new Vector2(rightOffset, _capCollider2D.offset.y);
             }
             else if (!slide)
             {
-                _anim.SetBool("Run", false);
-                _anim.SetBool("Jump", false);
-                _anim.SetBool("Idle", true);
+                moveDirection = 0;
+            }
+
+            if (grounded && Input.GetKeyDown(KeyCode.W))
+            {
+                jump = true;
+                grounded = false;
+                if (!shoot && !melee)
+                {
+                    _anim.SetBool("Idle", false);
+                    _anim.SetBool("Run", false);
+                    _anim.SetBool("Jump", true);
+                }
+                
+            }
+
+            if (grounded && !shoot && !melee)
+            {
+                if (Input.GetKey(KeyCode.A))
+                {
+                    if (Input.GetKeyDown(KeyCode.S))
+                    {
+                        StartCoroutine(SlideDelayLeft());
+                    }
+                    else if (!slide)
+                    {
+                        _anim.SetBool("Idle", false);
+                        _anim.SetBool("Jump", false);
+                        _anim.SetBool("Run", true);
+                    }
+                }
+                else if (Input.GetKey(KeyCode.D))
+                {
+                    if (Input.GetKeyDown(KeyCode.S))
+                    {
+                        StartCoroutine(SlideDelayRight());
+                    }
+                    else if (!slide)
+                    {
+                        _anim.SetBool("Idle", false);
+                        _anim.SetBool("Jump", false);
+                        _anim.SetBool("Run", true);
+                    }
+                }
+                else if (!slide)
+                {
+                    _anim.SetBool("Run", false);
+                    _anim.SetBool("Jump", false);
+                    _anim.SetBool("Idle", true);
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.LeftAlt))
+            {
+                StartCoroutine(ShootDelay());
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                StartCoroutine(MeleeDelay());
             }
         }
+        else
+        {
+            _anim.SetBool("Run", false);
+            _anim.SetBool("Jump", false);
+            _anim.SetBool("Idle", false);
+            _anim.SetBool("Shoot", false);
+            _anim.SetBool("Slide", false);
+            _anim.SetBool("Melee", false);
+            _anim.SetBool("Dead", true);
+        }
         
-        if (Input.GetKeyDown(KeyCode.LeftAlt))
-        {
-            StartCoroutine(ShootDelay());
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StartCoroutine(MeleeDelay());
-        }
 
 
     }
