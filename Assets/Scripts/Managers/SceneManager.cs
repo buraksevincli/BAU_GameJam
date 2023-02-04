@@ -5,13 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class SceneManager : MonoBehaviour
 {
+    private static SceneManager _instance;
+
+    public static SceneManager Instance => _instance;
+    
     [SerializeField] private GameObject _volumeBar;
     [SerializeField] private GameObject _volumeBarActive;
     [SerializeField] private GameObject _volumeBarDeactive;
-    
+
     public void StartGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("..");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("TutorialScene");
     }
 
     public void Credits()

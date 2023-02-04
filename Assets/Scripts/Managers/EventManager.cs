@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class EventManager : MonoBehaviour
 {
+    
     private static EventManager _instance;
     
     public static EventManager Instance => _instance;
