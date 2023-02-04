@@ -28,6 +28,10 @@ public class PlayerController : MonoBehaviour
 
     float rightOffset;
 
+    public GameObject rBullet;
+    public GameObject lBullet;
+
+
     void Start()
     {
         _rb2d = GetComponent<Rigidbody2D>();
@@ -77,6 +81,9 @@ public class PlayerController : MonoBehaviour
                 _spriteR.flipX = true;
                 //transform.localScale = leftScale;
                 _capCollider2D.offset = new Vector2(-rightOffset, _capCollider2D.offset.y);
+
+                rBullet.SetActive(false);
+                lBullet.SetActive(true);
             }
             else if (!slide && Input.GetKey(KeyCode.D))
             {
@@ -84,6 +91,9 @@ public class PlayerController : MonoBehaviour
                 _spriteR.flipX = false;
                 //transform.localScale = rightScale;
                 _capCollider2D.offset = new Vector2(rightOffset, _capCollider2D.offset.y);
+
+                lBullet.SetActive(false);
+                rBullet.SetActive(true);
             }
             else if (!slide)
             {

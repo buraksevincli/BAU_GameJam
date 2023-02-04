@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
-public class BulletSpawner : MonoBehaviour
+public class BulletSpawner_L : MonoBehaviour
 {
     [SerializeField] private GameObject _bullet;
     private GameObject instantiatedBullet;
