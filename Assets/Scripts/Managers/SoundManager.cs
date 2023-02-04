@@ -25,10 +25,6 @@ public class SoundManager : MonoBehaviour
     
     public void SetAudio(float value)
     {
-        foreach (AudioClip music in audio)
-        {
-            
-        }
         AudioListener.volume = value;
     }
 }

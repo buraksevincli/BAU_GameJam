@@ -152,6 +152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9a78a1ab2949574384e3c9a5c3a248a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _volumeBar: {fileID: 0}
+  _volumeBarActive: {fileID: 0}
+  _volumeBarDeactive: {fileID: 0}
 --- !u!4 &628991322
 Transform:
   m_ObjectHideFlags: 0
@@ -304,7 +307,7 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 1928698191, guid: 629449e252116402b83aba2e307c642d, type: 3}
     m_PressedSprite: {fileID: -1396957443, guid: fe6d6357702924348bb37d1d0e74d214, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}

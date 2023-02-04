@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 613f4b5c4c331f6488416e3a91af9f94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  jumpForce: 5
+  speed: 5
+  jumpForce: 10
 --- !u!212 &5809012519103951455
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -117,7 +117,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 6200000, guid: 1d0aae8ac5824e04bb087fe22aadeb60, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
