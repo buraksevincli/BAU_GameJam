@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
         rightOffset = _capCollider2D.offset.x;
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
