@@ -5,18 +5,23 @@ using UnityEngine;
 public class BulletMovement_L : MonoBehaviour
 {
     [SerializeField] float speed;
+    [SerializeField] GameObject explosion;
+    GameObject instantiatedExplosion;
 
 
-    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
             speed = 0;
+            instantiatedExplosion = Instantiate(explosion, transform.position, Quaternion.identity);
+            gameObject.SetActive(false);
         }
         else if (collision.gameObject.CompareTag("Ground"))
         {
             speed = 0;
+            instantiatedExplosion = Instantiate(explosion, transform.position, Quaternion.identity);
+            gameObject.SetActive(false);
         }
     }
 
