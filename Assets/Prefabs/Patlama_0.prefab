@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6486995767351646182}
   - component: {fileID: 6486995767351646183}
   - component: {fileID: 6486995767351646180}
+  - component: {fileID: 454279007469003584}
   m_Layer: 0
   m_Name: Patlama_0
   m_TagString: Untagged
@@ -105,3 +106,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &454279007469003584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6486995767351646181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4b7a0b2844e2c64dad123454533a4dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 2

@@ -6,7 +6,7 @@ public class BulletMovement_R : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] GameObject explosion;
-    GameObject instantiatedExplosion;
+    [SerializeField] GameObject bulletHitGround;
 
     
     private void OnCollisionEnter2D(Collision2D collision)
@@ -14,13 +14,13 @@ public class BulletMovement_R : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             speed = 0;
-            instantiatedExplosion = Instantiate(explosion, transform.position, Quaternion.identity);
+            Instantiate(explosion, transform.position, Quaternion.identity);
             gameObject.SetActive(false);
         }
         else
         {
             speed = 0;
-            instantiatedExplosion = Instantiate(explosion, transform.position, Quaternion.identity);
+            Instantiate(bulletHitGround, transform.position, Quaternion.identity);
             gameObject.SetActive(false);
         }
     }
