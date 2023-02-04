@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1135357625930924587}
   - component: {fileID: 1135357625930924584}
   - component: {fileID: 1135357625930924591}
-  - component: {fileID: 1135357625930924590}
   m_Layer: 0
   m_Name: Plant1
   m_TagString: Enemy
@@ -149,19 +148,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.95, y: 3}
   m_EdgeRadius: 0
---- !u!58 &1135357625930924590
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1135357625930924564}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -1.44, y: -0.5699998}
-  serializedVersion: 2
-  m_Radius: 1.6368588
