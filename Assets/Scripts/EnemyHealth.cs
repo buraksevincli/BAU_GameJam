@@ -11,10 +11,18 @@ public class EnemyHealth : MonoBehaviour
     float scaleX;
     float scaleY;
 
+    Animator _anim;
+    CircleCollider2D _circleCol;
+
     private void Start()
     {
+        _anim = GetComponent<Animator>();
+        _circleCol = GetComponent<CircleCollider2D>();
+
         scaleX = transform.localScale.x;
         scaleY = transform.localScale.y;
+
+        StartCoroutine(AnimOrder());
     }
     
     private void OnTriggerEnter2D(Collider2D collision)
@@ -43,6 +51,21 @@ public class EnemyHealth : MonoBehaviour
             transform.localScale = new Vector3(scaleX, scaleY, transform.localScale.z);
             Destroy(gameObject, 5f);
         }
+
+    }
+
+    IEnumerator AnimOrder()
+    {
+        _anim.SetBool("Attack", false);
+        _anim.SetBool("Idle", true);
+        yield return new WaitForSeconds(3f);
+        _anim.SetBool("Idle", false);
+        _anim.SetBool("Attack", true);
+        yield return new WaitForSeconds(0.2f);
+        _circleCol.enabled = true;
+        yield return new WaitForSeconds(0.8f);
+        _circleCol.enabled = false;
+        StartCoroutine(AnimOrder());
     }
 
 

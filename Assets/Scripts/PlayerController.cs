@@ -62,6 +62,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            isDead = true;
+        }
+    }
+
     private void FixedUpdate()
     {
         _rb2d.velocity = new Vector2(_currentSpeed * moveDirection, _rb2d.velocity.y);
@@ -75,7 +83,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(grounded);
         if (!isDead)
         {
             if (!slide && Input.GetKey(KeyCode.A))
