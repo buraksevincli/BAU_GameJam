@@ -52,7 +52,7 @@ public class EnemyHealth : MonoBehaviour
             scaleZ = Mathf.Clamp(scaleZ, 0, 1);
 
             transform.localScale = new Vector3(scaleX, scaleY, scaleZ);
-            Destroy(gameObject, 5f);
+            Destroy(gameObject, 0.5f);
         }
 
     }
