@@ -6,7 +6,7 @@ public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] float health;
     [SerializeField] float bulletDamage;
-
+    [SerializeField] float meleeDamage;
 
     float scaleX;
     float scaleY;
@@ -16,15 +16,19 @@ public class EnemyHealth : MonoBehaviour
         scaleX = transform.localScale.x;
         scaleY = transform.localScale.y;
     }
-
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
             health -= bulletDamage;
         }
+        else if (collision.gameObject.CompareTag("Slash"))
+        {
+            health -= meleeDamage;
+        }
     }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -40,4 +44,7 @@ public class EnemyHealth : MonoBehaviour
             Destroy(gameObject, 5f);
         }
     }
+
+
+
 }

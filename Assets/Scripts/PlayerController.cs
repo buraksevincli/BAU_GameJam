@@ -8,8 +8,6 @@ public class PlayerController : MonoBehaviour
     float _currentSpeed;
     public float jumpForce;
     int moveDirection;
-    Vector3 rightScale;
-    Vector3 leftScale;
 
     bool jump = false;
     bool slide = false;
@@ -17,7 +15,7 @@ public class PlayerController : MonoBehaviour
     bool shoot = false;
     bool canShoot = true;
     bool melee = false;
-    bool canMelee = true;
+    public static bool canMelee = true;
 
     bool isDead = false;
 
@@ -31,6 +29,12 @@ public class PlayerController : MonoBehaviour
     public GameObject rBullet;
     public GameObject lBullet;
 
+    public GameObject slash_R;
+    public GameObject slash_L;
+    bool rightSlash;
+    bool leftSlash;
+
+
 
     void Start()
     {
@@ -41,10 +45,9 @@ public class PlayerController : MonoBehaviour
 
         _currentSpeed = speed;
 
-        rightScale = transform.localScale;
-        leftScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-
         rightOffset = _capCollider2D.offset.x;
+
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -79,21 +82,30 @@ public class PlayerController : MonoBehaviour
             {
                 moveDirection = -1;
                 _spriteR.flipX = true;
-                //transform.localScale = leftScale;
                 _capCollider2D.offset = new Vector2(-rightOffset, _capCollider2D.offset.y);
 
                 rBullet.SetActive(false);
                 lBullet.SetActive(true);
+
+                rightSlash = false;
+                leftSlash = true;
+                //slash_R.SetActive(false);
+                //slash_L.SetActive(true);
             }
             else if (!slide && Input.GetKey(KeyCode.D))
             {
                 moveDirection = 1;
                 _spriteR.flipX = false;
-                //transform.localScale = rightScale;
                 _capCollider2D.offset = new Vector2(rightOffset, _capCollider2D.offset.y);
 
                 lBullet.SetActive(false);
                 rBullet.SetActive(true);
+
+                leftSlash = false;
+                rightSlash = true;
+                //slash_L.SetActive(false);
+                //slash_R.SetActive(true);
+                
             }
             else if (!slide)
             {
@@ -241,7 +253,18 @@ public class PlayerController : MonoBehaviour
             _anim.SetBool("Run", false);
             _anim.SetBool("Jump", false);
             _anim.SetBool("Melee", true);
+
+            if (rightSlash)
+            {
+                slash_R.SetActive(true);
+            }
+            else if (leftSlash)
+            {
+                slash_L.SetActive(true);
+            }
             yield return new WaitForSeconds(0.3f);
+            slash_R.SetActive(false);
+            slash_L.SetActive(false);
             _anim.SetBool("Melee", false);
             _anim.SetBool("Idle", true);
             melee = false;
