@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 392406291}
   - component: {fileID: 392406292}
   m_Layer: 0
-  m_Name: BulletSpawner
+  m_Name: BulletSpawner_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,6 +129,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bullet: {fileID: 2363550365671713223, guid: bba64590d04250f49a5e51c1c49cffe9, type: 3}
+--- !u!1 &1223274585
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1223274586}
+  - component: {fileID: 1223274587}
+  m_Layer: 0
+  m_Name: BulletSpawner_L
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1223274586
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223274585}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5809012519103951454}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1223274587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223274585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a3f881610eb49c43ae9a6d12656953a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bullet: {fileID: 2363550365671713223, guid: e5d53f819f021de4aac887f9172c58d7, type: 3}
 --- !u!1 &5809012519103951443
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,6 +211,7 @@ Transform:
   m_Children:
   - {fileID: 307848429}
   - {fileID: 392406291}
+  - {fileID: 1223274586}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -183,6 +229,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   jumpForce: 10
+  rBullet: {fileID: 392406290}
+  lBullet: {fileID: 1223274585}
 --- !u!114 &1868385999967645505
 MonoBehaviour:
   m_ObjectHideFlags: 0
