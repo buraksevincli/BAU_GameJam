@@ -69,6 +69,22 @@ public class PlayerController : MonoBehaviour
             _spriteR.flipX = false;
             _capCollider2D.offset = new Vector2(rightOffset, _capCollider2D.offset.y);
         }
+        else if (!slide)
+        {
+            moveDirection = 0;
+        }
+
+        if (grounded && Input.GetKeyDown(KeyCode.W))
+        {
+            jump = true;
+            grounded = false;
+            if (!shoot && !melee)
+            {
+                _anim.SetBool("Idle", false);
+                _anim.SetBool("Run", false);
+                _anim.SetBool("Jump", true);
+            }
+        }
 
         if (grounded && !shoot && !melee)
         {
@@ -100,22 +116,9 @@ public class PlayerController : MonoBehaviour
             }
             else if (!slide)
             {
-                moveDirection = 0;
                 _anim.SetBool("Run", false);
                 _anim.SetBool("Jump", false);
                 _anim.SetBool("Idle", true);
-            }
-        }
-
-        if (grounded && Input.GetKeyDown(KeyCode.W))
-        {
-            jump = true;
-            grounded = false;
-            if (!shoot && !melee)
-            {
-                _anim.SetBool("Idle", false);
-                _anim.SetBool("Run", false);
-                _anim.SetBool("Jump", true);
             }
         }
         
