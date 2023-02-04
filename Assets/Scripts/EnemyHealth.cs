@@ -10,6 +10,7 @@ public class EnemyHealth : MonoBehaviour
 
     float scaleX;
     float scaleY;
+    float scaleZ;
 
     Animator _anim;
     CircleCollider2D _circleCol;
@@ -45,10 +46,12 @@ public class EnemyHealth : MonoBehaviour
         {
             scaleX -= 5f * Time.deltaTime;
             scaleY -= 5f * Time.deltaTime;
+            scaleZ -= 5f * Time.deltaTime;
             scaleX = Mathf.Clamp(scaleX, 0, 1);
             scaleY = Mathf.Clamp(scaleY, 0, 1);
+            scaleZ = Mathf.Clamp(scaleZ, 0, 1);
 
-            transform.localScale = new Vector3(scaleX, scaleY, transform.localScale.z);
+            transform.localScale = new Vector3(scaleX, scaleY, scaleZ);
             Destroy(gameObject, 5f);
         }
 
