@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 2363550365671713218}
   - component: {fileID: 2363550365671713221}
   - component: {fileID: 2363550365671713220}
-  - component: {fileID: 5858974390776101553}
   - component: {fileID: 5782742114875218525}
   - component: {fileID: 8402084981042847105}
-  - component: {fileID: -4970574540639682815}
+  - component: {fileID: 2050214661900129925}
+  - component: {fileID: 6344126175365664338}
   m_Layer: 0
   m_Name: Bullet_R
   m_TagString: Bullet
@@ -109,32 +109,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!61 &5858974390776101553
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2363550365671713223}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.33914375, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.88, y: 1.07}
-    newSize: {x: 1.88, y: 1.07}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5}
-  m_EdgeRadius: 0
 --- !u!50 &5782742114875218525
 Rigidbody2D:
   serializedVersion: 4
@@ -171,8 +145,24 @@ MonoBehaviour:
   speed: 20
   explosion: {fileID: 6486995767351646181, guid: f5aeeecbdf3baba4fac6a8fba133c5b1, type: 3}
   bulletHitGround: {fileID: 7774056197644769603, guid: 284753f8704b38c4293bd1fbc6a4ae9d, type: 3}
---- !u!61 &-4970574540639682815
-BoxCollider2D:
+--- !u!58 &2050214661900129925
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2363550365671713223}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.33303165, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.25254917
+--- !u!58 &6344126175365664338
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -184,16 +174,6 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.33914375, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.88, y: 1.07}
-    newSize: {x: 1.88, y: 1.07}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0.33303165, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.55, y: 0.55}
-  m_EdgeRadius: 0
+  m_Radius: 0.27
