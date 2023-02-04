@@ -17,7 +17,7 @@ public class BulletMovement_L : MonoBehaviour
             instantiatedExplosion = Instantiate(explosion, transform.position, Quaternion.identity);
             gameObject.SetActive(false);
         }
-        else if (collision.gameObject.CompareTag("Ground"))
+        else
         {
             speed = 0;
             instantiatedExplosion = Instantiate(explosion, transform.position, Quaternion.identity);
