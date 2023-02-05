@@ -5990,6 +5990,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plant1
       objectReference: {fileID: 0}
+    - target: {fileID: 1135357625930924584, guid: fa3fd271ed4d4f74285216d416af7d4c, type: 3}
+      propertyPath: health
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1135357625930924585, guid: fa3fd271ed4d4f74285216d416af7d4c, type: 3}
       propertyPath: m_RootOrder
       value: 2
