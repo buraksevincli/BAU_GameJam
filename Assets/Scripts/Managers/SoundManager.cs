@@ -10,8 +10,11 @@ public class SoundManager : MonoBehaviour
 
     public AudioClip[] audio;
 
+    AudioSource audioSourceMusic;
+
     private void Awake()
     {
+        audioSourceMusic = GetComponent<AudioSource>();
         if (_instance == null)
         {
             _instance = this;
@@ -21,8 +24,26 @@ public class SoundManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        
     }
-    
+
+    private void Start()
+    {
+        audioSourceMusic.mute = false;
+    }
+    private void Update()
+    {
+        if (PlayerController.bossEnter)
+        {
+            audioSourceMusic.mute = true;
+        }
+        else
+        {
+            audioSourceMusic.mute = false;
+        }
+    }
+
     public void SetAudio(float value)
     {
         AudioListener.volume = value;

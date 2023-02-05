@@ -48,6 +48,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject bossHealthBarGameObject;
     [SerializeField] Slider bossHealthBar;
 
+    public static bool bossEnter;
+
     bool autoSave;
     void Start()
     {
@@ -74,6 +76,8 @@ public class PlayerController : MonoBehaviour
 
         canHitEffect = false;
         hitEnemy = false;
+
+        bossEnter = false;
 
         autoSave = true;
 
@@ -116,9 +120,11 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (collision.gameObject.CompareTag("BossArea"))
+        if (collision.gameObject.CompareTag("BossArea") && !bossEnter)
         {
+            bossEnter = true;
             bossHealthBarGameObject.SetActive(true);
+            StartCoroutine(ThrillerDelay());
         }
     }
 
@@ -335,6 +341,7 @@ public class PlayerController : MonoBehaviour
             _anim.SetBool("Run", false);
             _anim.SetBool("Jump", false);
             _anim.SetBool("Shoot", true);
+            AudioSource.PlayClipAtPoint(SoundManager.Instance.audio[7], gameObject.transform.position);
             yield return new WaitForSeconds(0.3f);
             _anim.SetBool("Shoot", false);
             _anim.SetBool("Idle", true);
@@ -395,6 +402,13 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+    }
+
+    IEnumerator ThrillerDelay()
+    {
+        AudioSource.PlayClipAtPoint(SoundManager.Instance.audio[8], gameObject.transform.position);
+        yield return new WaitForSeconds(2f);
+        AudioSource.PlayClipAtPoint(SoundManager.Instance.audio[9], gameObject.transform.position);
     }
 
 }

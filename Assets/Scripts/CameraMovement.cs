@@ -12,6 +12,8 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] GameObject finalScreen;
     [SerializeField] GameObject bossHealthBar;
 
+    [SerializeField] Transform bossFightPosition;
+
 
     bool once;
     // Start is called before the first frame update
@@ -32,6 +34,11 @@ public class CameraMovement : MonoBehaviour
             treeAnim.SetTrigger("FinalTree");
 
             StartCoroutine(DelayFinalScreen());
+        }
+        else if (PlayerController.bossEnter)
+        {
+            transform.position = bossFightPosition.position;
+            mainCamera.orthographicSize = 13;
         }
     }
 
