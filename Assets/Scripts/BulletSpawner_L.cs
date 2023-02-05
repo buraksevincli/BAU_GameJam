@@ -19,7 +19,7 @@ public class BulletSpawner_L : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftAlt))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             StartCoroutine(SpawnBullet());
         }
