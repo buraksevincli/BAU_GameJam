@@ -144,12 +144,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-
-        if (isDead && !(Boss.bossHealth <= 0))
-        {
-            
-            
-        }
+        
         
         if (!isDead && canMove)
         {
@@ -238,7 +233,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.LeftAlt))
+            if (Input.GetKeyDown(KeyCode.LeftShift))
             {
                 StartCoroutine(ShootDelay());
             }
@@ -248,7 +243,7 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(MeleeDelay());
             }
         }
-        else if(isDead && !(Boss.bossHealth <= 0))
+        else if(isDead)
         {
             canMove = false;
             isDead = false;
