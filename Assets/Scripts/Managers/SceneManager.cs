@@ -12,6 +12,7 @@ public class SceneManager : MonoBehaviour
     [SerializeField] private GameObject _volumeBar;
     [SerializeField] private GameObject _volumeBarActive;
     [SerializeField] private GameObject _volumeBarDeactive;
+    [SerializeField] private GameObject _eminMisin;
 
     public void StartGame()
     {
@@ -45,5 +46,15 @@ public class SceneManager : MonoBehaviour
         _volumeBar.SetActive(false);
         _volumeBarActive.SetActive(true);
         _volumeBarDeactive.SetActive(false);
+    }
+
+    public void ResetButon()
+    {
+        _eminMisin.SetActive(true);
+    }
+
+    public void Hayır()
+    {
+        _eminMisin.SetActive(false);
     }
 }
