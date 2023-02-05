@@ -10,7 +10,7 @@ public class BulletSpawner_L : MonoBehaviour
     [SerializeField] private GameObject _bullet;
     private GameObject instantiatedBullet;
 
-    bool canSpawn = true;
+    public static bool canSpawnBullet_L = true;
 
     private void Update()
     {
@@ -22,14 +22,14 @@ public class BulletSpawner_L : MonoBehaviour
 
     IEnumerator SpawnBullet()
     {
-        if (canSpawn)
+        if (canSpawnBullet_L)
         {
-            canSpawn = false;
+            canSpawnBullet_L = false;
             yield return new WaitForSeconds(0.1f);
             instantiatedBullet = Instantiate(_bullet, transform.position, Quaternion.identity);
             Destroy(instantiatedBullet, 5f);
-            yield return new WaitForSeconds(0.4f);
-            canSpawn = true;
+            //yield return new WaitForSeconds(0.4f);
+            //canSpawnBullet_L = true;
         }
     }
 

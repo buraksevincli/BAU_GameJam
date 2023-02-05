@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     Animator _anim;
     SpriteRenderer _spriteR;
     CapsuleCollider2D _capCollider2D;
+    BoxCollider2D _boxCollider2D;
 
     float rightOffset;
 
@@ -47,6 +48,7 @@ public class PlayerController : MonoBehaviour
         _anim = GetComponent<Animator>();
         _spriteR = GetComponent<SpriteRenderer>();
         _capCollider2D = GetComponent<CapsuleCollider2D>();
+        _boxCollider2D = GetComponent<BoxCollider2D>();
 
         _currentSpeed = speed;
 
@@ -115,6 +117,7 @@ public class PlayerController : MonoBehaviour
                 moveDirection = -1;
                 _spriteR.flipX = true;
                 _capCollider2D.offset = new Vector2(-rightOffset, _capCollider2D.offset.y);
+                _boxCollider2D.offset = new Vector2(-rightOffset, _boxCollider2D.offset.y);
 
                 rBullet.SetActive(false);
                 lBullet.SetActive(true);
@@ -129,6 +132,7 @@ public class PlayerController : MonoBehaviour
                 moveDirection = 1;
                 _spriteR.flipX = false;
                 _capCollider2D.offset = new Vector2(rightOffset, _capCollider2D.offset.y);
+                _boxCollider2D.offset = new Vector2(rightOffset, _boxCollider2D.offset.y);
 
                 lBullet.SetActive(false);
                 rBullet.SetActive(true);
@@ -218,7 +222,7 @@ public class PlayerController : MonoBehaviour
 
 
     }
-
+    //Eðer karakter kayarken kafasýnýn üstünden geçen bir þeye ölüyorsa karakterin box collider ý için slide fonksiyonlarýnýn içine scale set edilecek.
     IEnumerator SlideDelayRight()
     {
         if (!slide)
@@ -273,6 +277,8 @@ public class PlayerController : MonoBehaviour
             shoot = false;
             yield return new WaitForSeconds(0.2f);
             canShoot = true;
+            BulletSpawner_R.canSpawnBullet_R = true;
+            BulletSpawner_L.canSpawnBullet_L = true;
         }
     }
 
