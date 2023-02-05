@@ -11,6 +11,7 @@ TagManager:
   - Slash
   - FxTemporaire
   - Bubble
+  - Boss
   layers:
   - Default
   - TransparentFX

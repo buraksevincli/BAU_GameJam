@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -40,6 +41,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] GameObject MeleeHitEffect;
     GameObject instantiatedHit;
+    bool canHitEffect = false;
+
+    [SerializeField] Slider bossHealthBar;
 
 
     void Start()
@@ -83,16 +87,7 @@ public class PlayerController : MonoBehaviour
         }
         else if(collision.gameObject.CompareTag("Enemy") && melee)
         {
-            if (rightSlash)
-            {
-                instantiatedHit = Instantiate(MeleeHitEffect, new Vector3(transform.position.x + 1.2f, transform.position.y, transform.position.z), Quaternion.identity);
-                Destroy(instantiatedPof, 0.5f);
-            }
-            else if (leftSlash)
-            {
-                instantiatedHit = Instantiate(MeleeHitEffect, new Vector3(transform.position.x - 1.2f, transform.position.y, transform.position.z), Quaternion.identity);
-                Destroy(instantiatedPof, 0.5f);
-            }
+            
             
         }
     }
@@ -223,8 +218,23 @@ public class PlayerController : MonoBehaviour
             _anim.SetBool("Dead", true);
             moveDirection = 0;
         }
-        
 
+        if (canHitEffect)
+        {
+            canHitEffect = false;
+            if (rightSlash)
+            {
+                instantiatedHit = Instantiate(MeleeHitEffect, new Vector3(transform.position.x + 1.2f, transform.position.y, transform.position.z), Quaternion.identity);
+                Destroy(instantiatedHit, 0.5f);
+            }
+            else if (leftSlash)
+            {
+                instantiatedHit = Instantiate(MeleeHitEffect, new Vector3(transform.position.x - 1.2f, transform.position.y, transform.position.z), Quaternion.identity);
+                Destroy(instantiatedHit, 0.5f);
+            }
+        }
+
+        bossHealthBar.value = Boss.bossHealth;
 
     }
     //Eðer karakter kayarken kafasýnýn üstünden geçen bir þeye ölüyorsa karakterin box collider ý için slide fonksiyonlarýnýn içine scale set edilecek.
@@ -293,6 +303,7 @@ public class PlayerController : MonoBehaviour
         {
             melee = true;
             canMelee = false;
+            canHitEffect = true;
             _anim.SetBool("Idle", false);
             _anim.SetBool("Run", false);
             _anim.SetBool("Jump", false);
