@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject MeleeHitEffect;
     GameObject instantiatedHit;
     bool canHitEffect = false;
+    bool hitEnemy = false;
 
     [SerializeField] Slider bossHealthBar;
 
@@ -72,6 +73,7 @@ public class PlayerController : MonoBehaviour
         else if (collision.gameObject.CompareTag("Enemy"))
         {
             isDead = true;
+            hitEnemy = true;
         }
         else if (collision.gameObject.CompareTag("Bubble"))
         {
@@ -81,15 +83,15 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") && !melee)
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            hitEnemy = true;
+        }
+        else if (collision.gameObject.CompareTag("Enemy") && !melee)
         {
             isDead = true;
         }
-        else if(collision.gameObject.CompareTag("Enemy") && melee)
-        {
-            
-            
-        }
+        
     }
 
     private void OnParticleCollision(GameObject other)
@@ -219,9 +221,14 @@ public class PlayerController : MonoBehaviour
             moveDirection = 0;
         }
 
-        if (canHitEffect)
+        if (hitEnemy)
+        {
+            Debug.Log("hitEnemy");
+        }
+        if (canHitEffect && hitEnemy)
         {
             canHitEffect = false;
+            hitEnemy = false;
             if (rightSlash)
             {
                 instantiatedHit = Instantiate(MeleeHitEffect, new Vector3(transform.position.x + 1.2f, transform.position.y, transform.position.z), Quaternion.identity);
@@ -233,6 +240,7 @@ public class PlayerController : MonoBehaviour
             Destroy(instantiatedHit, 0.5f);
         }
 
+        
         bossHealthBar.value = Boss.bossHealth;
 
     }

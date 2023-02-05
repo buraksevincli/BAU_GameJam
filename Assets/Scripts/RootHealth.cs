@@ -31,6 +31,7 @@ public class RootHealth : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Slash"))
         {
+            Debug.Log("kestiiiiiii");
             health -= meleeDamage;
         }
     }
