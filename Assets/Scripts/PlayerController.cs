@@ -58,6 +58,8 @@ public class PlayerController : MonoBehaviour
         _currentSpeed = speed;
 
         rightOffset = _capCollider2D.offset.x;
+        
+        
 
         
     }
@@ -113,6 +115,12 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (isDead)
+        {
+            isDead = false;
+            UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+        }
+        
         if (!isDead)
         {
             if (!slide && Input.GetKey(KeyCode.A))
@@ -153,6 +161,7 @@ public class PlayerController : MonoBehaviour
 
             if (grounded && Input.GetKeyDown(KeyCode.W))
             {
+                AudioSource.PlayClipAtPoint(SoundManager.Instance.audio[1],gameObject.transform.position);
                 jump = true;
                 grounded = false;
                 if (!shoot && !melee)
@@ -225,6 +234,7 @@ public class PlayerController : MonoBehaviour
         
         if (canHitEffect && hitEnemy)
         {
+            AudioSource.PlayClipAtPoint(SoundManager.Instance.audio[3],gameObject.transform.position);
             canHitEffect = false;
             hitEnemy = false;
             if (rightSlash)
@@ -306,6 +316,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!melee && canMelee)
         {
+            AudioSource.PlayClipAtPoint(SoundManager.Instance.audio[2],gameObject.transform.position);
             melee = true;
             canMelee = false;
             canHitEffect = true;
