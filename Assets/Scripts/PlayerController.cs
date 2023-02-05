@@ -93,10 +93,7 @@ public class PlayerController : MonoBehaviour
             isDead = true;
         }
 
-        if (collision.gameObject.CompareTag("BossArea"))
-        {
-            bossHealthBarGameObject.SetActive(true);
-        }
+        
 
     }
 
@@ -110,7 +107,11 @@ public class PlayerController : MonoBehaviour
         {
             isDead = true;
         }
-        
+
+        if (collision.gameObject.CompareTag("BossArea"))
+        {
+            bossHealthBarGameObject.SetActive(true);
+        }
     }
 
     private void OnParticleCollision(GameObject other)
