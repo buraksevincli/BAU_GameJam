@@ -132,7 +132,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (isDead)
+        if (isDead && !(Boss.bossHealth <= 0))
         {
             isDead = false;
             UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
