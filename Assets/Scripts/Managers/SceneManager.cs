@@ -43,9 +43,6 @@ public class SceneManager : MonoBehaviour
 
     public void Home()
     {
-        currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-        PlayerPrefs.SetString("currentScene", currentScene);
-        PlayerPrefs.Save();
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
     }
 
