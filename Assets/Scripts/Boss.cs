@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
-    public static float bossHealth = 1f;
+    public static float bossHealth;
 
     // Start is called before the first frame update
     void Start()

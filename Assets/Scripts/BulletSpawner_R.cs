@@ -10,7 +10,12 @@ public class BulletSpawner_R : MonoBehaviour
     [SerializeField] private GameObject _bullet;
     private GameObject instantiatedBullet;
 
-    public static bool canSpawnBullet_R = true;
+    public static bool canSpawnBullet_R;
+
+    private void Start()
+    {
+        canSpawnBullet_R = true;
+    }
 
     private void Update()
     {

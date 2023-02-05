@@ -49,8 +49,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Slider bossHealthBar;
 
     public static bool bossEnter;
+    public Transform bossFightSpawnPos;
 
-    bool autoSave;
     void Start()
     {
         _rb2d = GetComponent<Rigidbody2D>();
@@ -78,8 +78,6 @@ public class PlayerController : MonoBehaviour
         hitEnemy = false;
 
         bossEnter = false;
-
-        autoSave = true;
 
         SceneManager.currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         PlayerPrefs.SetString("CurrentScene", SceneManager.currentScene);
@@ -284,11 +282,6 @@ public class PlayerController : MonoBehaviour
         }
 
         bossHealthBar.value = Boss.bossHealth;
-        /*
-        if (autoSave)
-        {
-            StartCoroutine(AutoSave());
-        }*/
 
     }
     //E�er karakter kayarken kafas�n�n �st�nden ge�en bir �eye �l�yorsa karakterin box collider � i�in slide fonksiyonlar�n�n i�ine scale set edilecek.
@@ -389,14 +382,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator AutoSave()
-    {
-        autoSave = false;
-        
-        yield return new WaitForSeconds(10);
-        autoSave = true;
-        
-    }
 
     IEnumerator RestartDelay()
     {
