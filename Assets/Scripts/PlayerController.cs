@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     float _currentSpeed;
     public float jumpForce;
     int moveDirection;
+    bool canMove;
 
     bool jump;
     bool slide;
@@ -67,6 +68,7 @@ public class PlayerController : MonoBehaviour
         canShoot = true;
         melee = false;
         canMelee = true;
+        canMove = true;
 
         isDead = false;
 
@@ -74,6 +76,10 @@ public class PlayerController : MonoBehaviour
         hitEnemy = false;
 
         autoSave = true;
+
+        SceneManager.currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        PlayerPrefs.SetString("CurrentScene", SceneManager.currentScene);
+        PlayerPrefs.Save();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -104,10 +110,10 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             hitEnemy = true;
-        }
-        else if (collision.gameObject.CompareTag("Enemy") && !melee)
-        {
-            isDead = true;
+            if (!melee)
+            {
+                isDead = true;
+            }
         }
 
         if (collision.gameObject.CompareTag("BossArea"))
@@ -134,14 +140,14 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+
         if (isDead && !(Boss.bossHealth <= 0))
         {
-            isDead = false;
-            UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
-            AudioSource.PlayClipAtPoint(SoundManager.Instance.audio[6], gameObject.transform.position);
+            
+            
         }
         
-        if (!isDead)
+        if (!isDead && canMove)
         {
             if (!slide && Input.GetKey(KeyCode.A))
             {
@@ -238,8 +244,10 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(MeleeDelay());
             }
         }
-        else
+        else if(isDead && !(Boss.bossHealth <= 0))
         {
+            canMove = false;
+            isDead = false;
             _anim.SetBool("Run", false);
             _anim.SetBool("Jump", false);
             _anim.SetBool("Idle", false);
@@ -248,6 +256,9 @@ public class PlayerController : MonoBehaviour
             _anim.SetBool("Melee", false);
             _anim.SetBool("Dead", true);
             moveDirection = 0;
+            
+            AudioSource.PlayClipAtPoint(SoundManager.Instance.audio[6], gameObject.transform.position);
+            StartCoroutine(RestartDelay());
         }
 
         
@@ -267,11 +278,11 @@ public class PlayerController : MonoBehaviour
         }
 
         bossHealthBar.value = Boss.bossHealth;
-
+        /*
         if (autoSave)
         {
             StartCoroutine(AutoSave());
-        }
+        }*/
 
     }
     //E�er karakter kayarken kafas�n�n �st�nden ge�en bir �eye �l�yorsa karakterin box collider � i�in slide fonksiyonlar�n�n i�ine scale set edilecek.
@@ -304,6 +315,7 @@ public class PlayerController : MonoBehaviour
             _anim.SetBool("Slide", true);
             _capCollider2D.offset = new Vector2(0.97f, -0.9449035f);
             _capCollider2D.size = new Vector2(2.96f, 3.008193f);
+            AudioSource.PlayClipAtPoint(SoundManager.Instance.audio[2], gameObject.transform.position);
             yield return new WaitForSeconds(0.6f);
             _anim.SetBool("Slide", false);
             slide = false;
@@ -373,13 +385,16 @@ public class PlayerController : MonoBehaviour
     IEnumerator AutoSave()
     {
         autoSave = false;
-        SceneManager.currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-        PlayerPrefs.SetString("CurrentScene", SceneManager.currentScene);
-        PlayerPrefs.Save();
+        
         yield return new WaitForSeconds(10);
         autoSave = true;
         
     }
 
+    IEnumerator RestartDelay()
+    {
+        yield return new WaitForSeconds(2);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+    }
 
 }
