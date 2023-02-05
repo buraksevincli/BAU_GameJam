@@ -132,6 +132,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isDead)
         {
+            AudioSource.PlayClipAtPoint(SoundManager.Instance.audio[6],gameObject.transform.position);
             isDead = false;
             UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
         }

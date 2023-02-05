@@ -22,10 +22,12 @@ public class PoisonPlantHealth : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
+            AudioSource.PlayClipAtPoint(SoundManager.Instance.audio[5],gameObject.transform.position);
             health -= bulletDamage;
         }
         else if (collision.gameObject.CompareTag("Slash"))
         {
+            AudioSource.PlayClipAtPoint(SoundManager.Instance.audio[3],gameObject.transform.position);
             health -= meleeDamage;
         }
     }
