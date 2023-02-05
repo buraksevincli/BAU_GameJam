@@ -10,15 +10,15 @@ public class PlayerController : MonoBehaviour
     public float jumpForce;
     int moveDirection;
 
-    bool jump = false;
-    bool slide = false;
-    bool grounded = true;
-    bool shoot = false;
-    public static bool canShoot = true;
+    bool jump;
+    bool slide;
+    bool grounded;
+    bool shoot;
+    public static bool canShoot;
     bool melee = false;
-    public static bool canMelee = true;
+    public static bool canMelee;
 
-    public static bool isDead = false;
+    public static bool isDead;
 
     Rigidbody2D _rb2d;
     Animator _anim;
@@ -41,8 +41,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] GameObject MeleeHitEffect;
     GameObject instantiatedHit;
-    bool canHitEffect = false;
-    bool hitEnemy = false;
+    bool canHitEffect;
+    bool hitEnemy;
 
     [SerializeField] Slider bossHealthBar;
 
@@ -58,10 +58,19 @@ public class PlayerController : MonoBehaviour
         _currentSpeed = speed;
 
         rightOffset = _capCollider2D.offset.x;
-        
-        
 
-        
+        jump = false;
+        slide = false;
+        grounded = true;
+        shoot = false;
+        canShoot = true;
+        melee = false;
+        canMelee = true;
+
+        isDead = false;
+
+        canHitEffect = false;
+        hitEnemy = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -82,6 +91,12 @@ public class PlayerController : MonoBehaviour
         {
             isDead = true;
         }
+
+        if (collision.gameObject.CompareTag("BossArea"))
+        {
+
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -234,7 +249,6 @@ public class PlayerController : MonoBehaviour
         
         if (canHitEffect && hitEnemy)
         {
-            AudioSource.PlayClipAtPoint(SoundManager.Instance.audio[3],gameObject.transform.position);
             canHitEffect = false;
             hitEnemy = false;
             if (rightSlash)

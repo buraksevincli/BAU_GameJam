@@ -9,7 +9,7 @@ public class Boss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        bossHealth = 1f;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
