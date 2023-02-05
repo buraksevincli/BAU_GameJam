@@ -71,6 +71,8 @@ public class SceneManager : MonoBehaviour
         currentScene = "HomeScene";
         PlayerPrefs.SetString("currentScene", currentScene);
         PlayerPrefs.Save();
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
     }
 
     public void Hayır()
