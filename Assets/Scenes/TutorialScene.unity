@@ -5600,6 +5600,7 @@ MonoBehaviour:
   _volumeBar: {fileID: 0}
   _volumeBarActive: {fileID: 0}
   _volumeBarDeactive: {fileID: 0}
+  _eminMisin: {fileID: 0}
 --- !u!4 &773362246
 Transform:
   m_ObjectHideFlags: 0
@@ -7280,11 +7281,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4754708433548723717, guid: 822e5fadabf27584080f1dfbb2ab1a3e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 34.92
+      value: 42.39
       objectReference: {fileID: 0}
     - target: {fileID: 4754708433548723717, guid: 822e5fadabf27584080f1dfbb2ab1a3e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.98
+      value: -1.86
       objectReference: {fileID: 0}
     - target: {fileID: 4754708433548723717, guid: 822e5fadabf27584080f1dfbb2ab1a3e, type: 3}
       propertyPath: m_LocalPosition.z

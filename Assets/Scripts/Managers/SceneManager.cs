@@ -16,7 +16,7 @@ public class SceneManager : MonoBehaviour
 
     public void StartGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("TutorialScene");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("HomeScene");
     }
 
     public void Credits()

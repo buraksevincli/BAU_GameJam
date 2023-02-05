@@ -10,7 +10,12 @@ public class Collide : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Tutorial"))
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Level1Desing");
+        }
+
+        if (col.gameObject.CompareTag("Level1"))
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Level2Desing");
         }
     }
 }
