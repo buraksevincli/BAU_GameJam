@@ -11,7 +11,8 @@ public class Dialog : MonoBehaviour
     public float typingSpeed;
 
     public GameObject continueButton;
-    public Animator textDisplayAnim;
+    [SerializeField] private GameObject _diyalogKutusu;
+    [SerializeField] private GameObject _panel;
 
     void Start()
     {
@@ -36,7 +37,6 @@ public class Dialog : MonoBehaviour
 
     public void NextSentences()
     {
-        textDisplayAnim.SetTrigger("Change");
         continueButton.SetActive(false); 
 
         if(index < sentences.Length - 1)
@@ -47,7 +47,16 @@ public class Dialog : MonoBehaviour
         }
         else
         {
-            textDisplay.text = "";
+            StartCoroutine(SahneSonu());
         }
+    }
+
+    IEnumerator SahneSonu()
+    {
+        _diyalogKutusu.SetActive(false);
+        continueButton.SetActive(false);
+        _panel.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("TutorialScene");
     }
 }
