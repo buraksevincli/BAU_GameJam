@@ -233,7 +233,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.LeftShift))
+            if (Input.GetKeyDown(KeyCode.LeftAlt))
             {
                 StartCoroutine(ShootDelay());
             }
