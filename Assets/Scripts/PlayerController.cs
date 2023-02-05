@@ -225,13 +225,12 @@ public class PlayerController : MonoBehaviour
             if (rightSlash)
             {
                 instantiatedHit = Instantiate(MeleeHitEffect, new Vector3(transform.position.x + 1.2f, transform.position.y, transform.position.z), Quaternion.identity);
-                Destroy(instantiatedHit, 0.5f);
             }
             else if (leftSlash)
             {
                 instantiatedHit = Instantiate(MeleeHitEffect, new Vector3(transform.position.x - 1.2f, transform.position.y, transform.position.z), Quaternion.identity);
-                Destroy(instantiatedHit, 0.5f);
             }
+            Destroy(instantiatedHit, 0.5f);
         }
 
         bossHealthBar.value = Boss.bossHealth;
