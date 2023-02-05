@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject bossHealthBarGameObject;
     [SerializeField] Slider bossHealthBar;
 
-
+    bool autoSave;
     void Start()
     {
         _rb2d = GetComponent<Rigidbody2D>();
@@ -72,6 +72,8 @@ public class PlayerController : MonoBehaviour
 
         canHitEffect = false;
         hitEnemy = false;
+
+        autoSave = true;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -264,8 +266,12 @@ public class PlayerController : MonoBehaviour
             Destroy(instantiatedHit, 0.5f);
         }
 
-        
         bossHealthBar.value = Boss.bossHealth;
+
+        if (autoSave)
+        {
+            StartCoroutine(AutoSave());
+        }
 
     }
     //E�er karakter kayarken kafas�n�n �st�nden ge�en bir �eye �l�yorsa karakterin box collider � i�in slide fonksiyonlar�n�n i�ine scale set edilecek.
@@ -363,5 +369,17 @@ public class PlayerController : MonoBehaviour
             canMelee = true;
         }
     }
+
+    IEnumerator AutoSave()
+    {
+        autoSave = false;
+        SceneManager.currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        PlayerPrefs.SetString("CurrentScene", SceneManager.currentScene);
+        PlayerPrefs.Save();
+        yield return new WaitForSeconds(10);
+        autoSave = true;
+        
+    }
+
 
 }
