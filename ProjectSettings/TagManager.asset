@@ -11,11 +11,7 @@ TagManager:
   - Slash
   - FxTemporaire
   - Bubble
-<<<<<<< Updated upstream
   - Boss
-=======
-  - Level1
->>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
