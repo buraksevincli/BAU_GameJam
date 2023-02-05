@@ -221,10 +221,7 @@ public class PlayerController : MonoBehaviour
             moveDirection = 0;
         }
 
-        if (hitEnemy)
-        {
-            Debug.Log("hitEnemy");
-        }
+        
         if (canHitEffect && hitEnemy)
         {
             canHitEffect = false;
