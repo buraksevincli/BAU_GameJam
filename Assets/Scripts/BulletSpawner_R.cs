@@ -10,17 +10,26 @@ public class BulletSpawner_R : MonoBehaviour
     [SerializeField] private GameObject _bullet;
     private GameObject instantiatedBullet;
 
+    bool canSpawn = true;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.LeftAlt))
         {
-            Invoke(nameof(Spawn),0.1f);
+            StartCoroutine(SpawnBullet());
+        }
+    }
+    IEnumerator SpawnBullet()
+    {
+        if (canSpawn)
+        {
+            canSpawn = false;
+            yield return new WaitForSeconds(0.1f);
+            instantiatedBullet = Instantiate(_bullet, transform.position, Quaternion.identity);
+            Destroy(instantiatedBullet, 5f);
+            yield return new WaitForSeconds(0.4f);
+            canSpawn = true;
         }
     }
 
-    private void Spawn()
-    {
-        instantiatedBullet = Instantiate(_bullet, transform.position, Quaternion.identity);
-        Destroy(instantiatedBullet,5f);
-    }
 }

@@ -8,7 +8,10 @@ public class BulletMovement_R : MonoBehaviour
     [SerializeField] GameObject explosion;
     [SerializeField] GameObject bulletHitGround;
 
-    
+    [SerializeField] GameObject popEffect;
+    GameObject instantiatedPop;
+
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
@@ -16,6 +19,12 @@ public class BulletMovement_R : MonoBehaviour
             speed = 0;
             Instantiate(explosion, transform.position, Quaternion.identity);
             gameObject.SetActive(false);
+        }
+        else if (collision.gameObject.CompareTag("Bubble"))
+        {
+            instantiatedPop = Instantiate(popEffect, collision.gameObject.transform.position, Quaternion.identity);
+            Destroy(collision.gameObject);
+            Destroy(instantiatedPop, 0.3f);
         }
         else
         {

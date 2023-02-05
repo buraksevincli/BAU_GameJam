@@ -401,10 +401,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PoisonBubble
       objectReference: {fileID: 0}
-    - target: {fileID: 4669299320165872679, guid: 3a438280451dab04599cb0cfcf0983ad, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6263875543714662576, guid: 3a438280451dab04599cb0cfcf0983ad, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -464,7 +460,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1135357625930924564, guid: fa3fd271ed4d4f74285216d416af7d4c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1135357625930924585, guid: fa3fd271ed4d4f74285216d416af7d4c, type: 3}
       propertyPath: m_RootOrder
@@ -510,6 +506,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1135357625930924591, guid: fa3fd271ed4d4f74285216d416af7d4c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa3fd271ed4d4f74285216d416af7d4c, type: 3}
 --- !u!1001 &4754708433538846781
@@ -529,7 +529,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4754708433548723717, guid: 822e5fadabf27584080f1dfbb2ab1a3e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.91798973
+      value: -1.56
       objectReference: {fileID: 0}
     - target: {fileID: 4754708433548723717, guid: 822e5fadabf27584080f1dfbb2ab1a3e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -576,10 +576,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5809012519103951440, guid: 62c84c25ad0837f48b0fe4ae4844dd10, type: 3}
-      propertyPath: pofEffect
-      value: 
-      objectReference: {fileID: 4218974953428372052, guid: be236d11b97112842b54d7e617560370, type: 3}
     - target: {fileID: 5809012519103951443, guid: 62c84c25ad0837f48b0fe4ae4844dd10, type: 3}
       propertyPath: m_Name
       value: Player
@@ -626,10 +622,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5809012519103951454, guid: 62c84c25ad0837f48b0fe4ae4844dd10, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5809012519103951455, guid: 62c84c25ad0837f48b0fe4ae4844dd10, type: 3}
-      propertyPath: m_FlipX
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

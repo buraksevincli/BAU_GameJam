@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     bool slide = false;
     bool grounded = true;
     bool shoot = false;
-    bool canShoot = true;
+    public static bool canShoot = true;
     bool melee = false;
     public static bool canMelee = true;
 
@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject pofEffect;
     GameObject instantiatedPof;
 
+    [SerializeField] GameObject MeleeHitEffect;
+    GameObject instantiatedHit;
 
 
     void Start()
@@ -65,6 +67,10 @@ public class PlayerController : MonoBehaviour
         {
             isDead = true;
         }
+        else if (collision.gameObject.CompareTag("Bubble"))
+        {
+            isDead = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -72,6 +78,20 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy") && !melee)
         {
             isDead = true;
+        }
+        else if(collision.gameObject.CompareTag("Enemy") && melee)
+        {
+            if (rightSlash)
+            {
+                instantiatedHit = Instantiate(MeleeHitEffect, new Vector3(transform.position.x + 1.2f, transform.position.y, transform.position.z), Quaternion.identity);
+                Destroy(instantiatedPof, 0.5f);
+            }
+            else if (leftSlash)
+            {
+                instantiatedHit = Instantiate(MeleeHitEffect, new Vector3(transform.position.x - 1.2f, transform.position.y, transform.position.z), Quaternion.identity);
+                Destroy(instantiatedPof, 0.5f);
+            }
+            
         }
     }
 
@@ -192,6 +212,7 @@ public class PlayerController : MonoBehaviour
             _anim.SetBool("Slide", false);
             _anim.SetBool("Melee", false);
             _anim.SetBool("Dead", true);
+            moveDirection = 0;
         }
         
 

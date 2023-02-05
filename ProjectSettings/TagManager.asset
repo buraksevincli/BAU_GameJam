@@ -9,6 +9,8 @@ TagManager:
   - Enemy
   - Bullet
   - Slash
+  - FxTemporaire
+  - Bubble
   layers:
   - Default
   - TransparentFX
