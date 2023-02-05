@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
     bool canHitEffect;
     bool hitEnemy;
 
+    [SerializeField] GameObject bossHealthBarGameObject;
     [SerializeField] Slider bossHealthBar;
 
 
@@ -77,10 +78,10 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            AudioSource.PlayClipAtPoint(SoundManager.Instance.audio[0],gameObject.transform.position);
             grounded = true;
             instantiatedPof = Instantiate(pofEffect, new Vector3(transform.position.x, transform.position.y - 1, transform.position.z), Quaternion.identity);
             Destroy(instantiatedPof, 0.5f);
+            AudioSource.PlayClipAtPoint(SoundManager.Instance.audio[0], gameObject.transform.position);
         }
         else if (collision.gameObject.CompareTag("Enemy"))
         {
@@ -94,7 +95,7 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("BossArea"))
         {
-
+            bossHealthBarGameObject.SetActive(true);
         }
 
     }
@@ -132,9 +133,9 @@ public class PlayerController : MonoBehaviour
     {
         if (isDead)
         {
-            AudioSource.PlayClipAtPoint(SoundManager.Instance.audio[6],gameObject.transform.position);
             isDead = false;
             UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+            AudioSource.PlayClipAtPoint(SoundManager.Instance.audio[6], gameObject.transform.position);
         }
         
         if (!isDead)
@@ -177,7 +178,6 @@ public class PlayerController : MonoBehaviour
 
             if (grounded && Input.GetKeyDown(KeyCode.W))
             {
-                AudioSource.PlayClipAtPoint(SoundManager.Instance.audio[1],gameObject.transform.position);
                 jump = true;
                 grounded = false;
                 if (!shoot && !melee)
@@ -186,7 +186,7 @@ public class PlayerController : MonoBehaviour
                     _anim.SetBool("Run", false);
                     _anim.SetBool("Jump", true);
                 }
-                
+                AudioSource.PlayClipAtPoint(SoundManager.Instance.audio[1], gameObject.transform.position);
             }
 
             if (grounded && !shoot && !melee)
@@ -331,7 +331,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!melee && canMelee)
         {
-            AudioSource.PlayClipAtPoint(SoundManager.Instance.audio[2],gameObject.transform.position);
+            
             melee = true;
             canMelee = false;
             canHitEffect = true;
@@ -348,13 +348,17 @@ public class PlayerController : MonoBehaviour
             {
                 slash_L.SetActive(true);
             }
+            AudioSource.PlayClipAtPoint(SoundManager.Instance.audio[2], gameObject.transform.position);
             yield return new WaitForSeconds(0.3f);
+            Debug.Log(0);
             slash_R.SetActive(false);
             slash_L.SetActive(false);
             _anim.SetBool("Melee", false);
             _anim.SetBool("Idle", true);
             melee = false;
+            Debug.Log(1);
             yield return new WaitForSeconds(0.2f);
+            Debug.Log(2);
             canMelee = true;
         }
     }

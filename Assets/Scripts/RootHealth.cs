@@ -27,13 +27,15 @@ public class RootHealth : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            AudioSource.PlayClipAtPoint(SoundManager.Instance.audio[5],gameObject.transform.position);
+            
             health -= bulletDamage;
+            AudioSource.PlayClipAtPoint(SoundManager.Instance.audio[5], gameObject.transform.position);
         }
         else if (collision.gameObject.CompareTag("Slash"))
         {
-            AudioSource.PlayClipAtPoint(SoundManager.Instance.audio[3],gameObject.transform.position);
+            
             health -= meleeDamage;
+            AudioSource.PlayClipAtPoint(SoundManager.Instance.audio[3], gameObject.transform.position);
         }
     }
     
