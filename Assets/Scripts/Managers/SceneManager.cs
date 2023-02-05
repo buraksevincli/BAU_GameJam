@@ -14,18 +14,18 @@ public class SceneManager : MonoBehaviour
     [SerializeField] private GameObject _volumeBarDeactive;
     [SerializeField] private GameObject _eminMisin;
 
-    string currentScene;
+    string currentScene = "HomeScene";
 
 
     private void Awake()
     {
         currentScene = PlayerPrefs.GetString("currentScene", currentScene);
-        UnityEngine.SceneManagement.SceneManager.LoadScene(currentScene);
+        
     }
 
     public void StartGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("HomeScene");
+        UnityEngine.SceneManagement.SceneManager.LoadScene(currentScene);
     }
 
     public void Credits()
@@ -43,6 +43,9 @@ public class SceneManager : MonoBehaviour
 
     public void Home()
     {
+        currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        PlayerPrefs.SetString("currentScene", currentScene);
+        PlayerPrefs.Save();
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
     }
 
@@ -63,6 +66,9 @@ public class SceneManager : MonoBehaviour
     public void ResetButon()
     {
         _eminMisin.SetActive(true);
+        currentScene = "HomeScene";
+        PlayerPrefs.SetString("currentScene", currentScene);
+        PlayerPrefs.Save();
     }
 
     public void Hayır()
