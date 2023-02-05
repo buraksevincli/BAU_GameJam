@@ -16,7 +16,7 @@ public class Boss : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            bossHealth -= 0.3f;
+            bossHealth -= 1f;
         }
     }
 
