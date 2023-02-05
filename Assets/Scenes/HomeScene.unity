@@ -516,8 +516,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.886, y: -7.49881}
-  m_SizeDelta: {x: 1652.228, y: 134.0021}
+  m_AnchoredPosition: {x: 7.9603, y: -13.9604}
+  m_SizeDelta: {x: 1628.5354, y: 121.0789}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &574943248
 MonoBehaviour:
@@ -541,8 +541,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fdda409a848e64d8eb9e21954d318fd8, type: 2}
+  m_sharedMaterial: {fileID: -7839664564511343311, guid: fdda409a848e64d8eb9e21954d318fd8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -933,40 +933,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textDisplay: {fileID: 574943248}
   sentences:
-  - "JOHN DEDE: Jenny, ho\u015F geldin evlad\u0131m \xF6h\xF6 \xF6h\xF6."
-  - "JENNY: Ho\u015F buldum dede, nas\u0131l ge\xE7ti g\xFCn\xFCn? "
-  - "JOHN DEDE: G\xFCzeldi Jenny, eski an\u0131lar\u0131m\u0131 yad ediyordum.  "
-  - "JOHN DEDE: Seninde 18 ya\u015F\u0131na girmene az bir vakit kald\u0131, sana
-    baz\u0131 ger\xE7ekleri a\xE7\u0131klamam\u0131n vakti geldide ge\xE7iyor. "
-  - "JOHN DEDE: Bundan sonraki hayat\u0131n\u0131 nerede ge\xE7irmek istedi\u011Fine
-    \xF6zg\xFCrce karar vermen gerekiyor.  "
-  - "JOHN DEDE: Benim hastal\u0131\u011F\u0131m\u0131n bu karar\u0131n\u0131 al\u0131rken
-    bir etki olu\u015Fturmas\u0131n\u0131 istemiyorum. "
-  - "JENNY: Bana bunlardan hi\xE7 bahsetmemi\u015Ftin dede. "
-  - "JOHN DEDE: Buraya geldi\u011Fim ilk g\xFCnlerin ard\u0131ndan ormanc\u0131l\u0131kla
-    ge\xE7imimi sa\u011Flamaya ba\u015Flam\u0131\u015Ft\u0131m. "
-  - "JOHN DEDE: Ama orman\u0131n k\xF6k\xFCne verdi\u011Fim bu zarar\u0131n bir g\xFCn
-    benim bir lanetim haline gelece\u011Fi hi\xE7 akl\u0131ma gelmemi\u015Fti."
-  - "JOHN DEDE: Evimizin arkas\u0131ndaki orman\u0131n derinliklerinde heybetli bir
-    a\u011Fa\xE7 var. "
-  - "JOHN DEDE: Ama bu a\u011Faca benim yakla\u015Fmam m\xFCmk\xFCn de\u011Fil. "
-  - "JOHN DEDE: \xC7\xFCnk\xFC atalar\u0131n\u0131n intikam\u0131n\u0131 alabilmek
-    i\xE7in benim can\u0131m\u0131 istiyor. "
-  - "JENNY: Dede, yoksa y\u0131llard\u0131r bu hastal\u0131\u011F\u0131n\u0131n iyile\u015Fememe
-    sebebi orman\u0131n laneti miydi? "
-  - "JOHN DEDE: Evet, evlad\u0131m. Bunlar\u0131 sana anlatmam\u0131n sebebi art\u0131k
-    beni iyile\u015Ftirerek \xF6zg\xFCrl\xFC\u011F\xFCne kavu\u015Fabilecek durumda
-    olman. "
-  - "JENNY: Peki seni sa\u011Fl\u0131\u011F\u0131na geri kavu\u015Fturabilmek i\xE7in
-    ne yapabilirim dede? "
-  - "JOHN DEDE: Orman\u0131n derinliklerindeki o heybetli a\u011Fac\u0131n dibine
-    bu verdi\u011Fim iksiri d\xF6kmelisin.  "
-  - "JOHN DEDE: Yol boyunca bir s\xFCr\xFC tehlikeyle kar\u015F\u0131la\u015Facaks\u0131n. "
-  - "JOHN DEDE: O tehlikelerin verdi\u011Fi zarar\u0131 iyile\u015Ftirmek i\xE7in
-    yol boyunca saklanm\u0131\u015F olan panzehirleri toplamal\u0131s\u0131n. "
-  - "JOHN DEDE: Ancak en b\xFCy\xFCk hasar\u0131 heybetli a\u011Fa\xE7la kar\u015F\u0131la\u015Ft\u0131\u011F\u0131nda
-    alaca\u011F\u0131n\u0131 unutma! "
-  - "JOHN DEDE: G\xFC\xE7 seninle olsun evlad\u0131m! "
+  - 'JOHN DEDE: Jenny, hos geldin evladim oho oho. '
+  - 'JENNY: Hos buldum dede, nasil gecti gunun? '
+  - 'JOHN DEDE: Guzeldi Jenny, eski anilarimi yad ediyordum.  '
+  - 'JOHN DEDE: Senin de 18 yasina girmene az bir vakit kaldi, sana bazi gercekleri
+    aciklamamin vakti geldide geciyor. '
+  - 'JOHN DEDE: Bundan sonraki hayatini nerede gecirmek istedigine ozgurce karar
+    vermen gerekiyor.  '
+  - 'JOHN DEDE: Benim hastaligimin bu kararini alirken bir etki olusturmasini istemiyorum. '
+  - 'JENNY: Bana bunlardan hic bahsetmemistin dede. '
+  - 'JOHN DEDE: Buraya geldigim ilk gunlerin ardindan ormancilikla gecimimi saglamaya
+    baslamistim. '
+  - 'JOHN DEDE: Ama ormanin kokune verdigim bu zararin bir gun benim bir lanetim
+    haline gelecegi hic aklima gelmemisti. '
+  - 'JOHN DEDE: Evimizin arkasindaki ormanin derinliklerinde heybetli bir agac var. '
+  - 'JOHN DEDE: Ama bu agaca benim yaklasmam mumkun degil. '
+  - 'JOHN DEDE: Cunku atalarinin intikamini alabilmek icin benim canimi istiyor. '
+  - 'JENNY: Dede, yoksa yillardir bu hastaliginin iyilesememe sebebi ormanin laneti
+    miydi? '
+  - 'JOHN DEDE: Evet, evladim. Bunlari sana anlatmamin sebebi artik beni iyilestirerek
+    ozgurlugune kavusabilecek durumda olman. '
+  - 'JENNY: Peki seni sagligina geri kavusturabilmek icin ne yapabilirim dede? '
+  - 'JOHN DEDE: Ormanin derinliklerindeki o heybetli agacin dibine bu verdigim iksiri
+    dokmelisin.  '
+  - 'JOHN DEDE: Yol boyunca bir suru tehlikeyle karsilasacaksin. '
+  - 'JOHN DEDE: Guc seninle olsun evladim! '
   - 'JENNY: Dede... Yine mi Star Wars izledin?  '
   typingSpeed: 0.005
   continueButton: {fileID: 1266523358}
@@ -2083,6 +2074,7 @@ MonoBehaviour:
   slash_L: {fileID: 0}
   pofEffect: {fileID: 0}
   MeleeHitEffect: {fileID: 0}
+  bossHealthBar: {fileID: 0}
 --- !u!50 &5809012518450414267
 Rigidbody2D:
   serializedVersion: 4
