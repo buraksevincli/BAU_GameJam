@@ -38,16 +38,27 @@ public class Diyalog : MonoBehaviour
     void StartDialogue()
     {
         index = 0;
-        StartCoroutine(TypeLine());
+        StartCoroutine(John());
     }
 
-    IEnumerator TypeLine()
+    void StartDialogueJenny()
     {
+        index = 0;
+        StartCoroutine(Jenny());
+    }
+
+    IEnumerator John()
+    {
+
         //Tpye each character 1 by 1
         foreach (char c in lines[index].ToCharArray())
         {
             textComponent.text += c;
             yield return new WaitForSeconds(textSpeed);
+            
+
+
+
         }
     }
 
@@ -57,7 +68,36 @@ public class Diyalog : MonoBehaviour
         {
             index++;
             textComponent.text = string.Empty;
-            StartCoroutine(TypeLine());
+            StartCoroutine(John());
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
+    IEnumerator Jenny()
+    {
+
+        //Tpye each character 1 by 1
+        foreach (char c in lines[index].ToCharArray())
+        {
+            textComponent.text += c;
+            yield return new WaitForSeconds(textSpeed);
+
+
+
+
+        }
+    }
+
+    void NextLineJenny() 
+    {
+        if (index < lines.Length - 1)
+        {
+            index++;
+            textComponent.text = string.Empty;
+            StartCoroutine(Jenny());
         }
         else
         {
