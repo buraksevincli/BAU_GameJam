@@ -523,7 +523,6 @@ MonoBehaviour:
   treeAnim: {fileID: 1701430594}
   finalScreen: {fileID: 1996913370}
   bossHealthBar: {fileID: 1649862049}
-  player: {fileID: 419463762}
 --- !u!1 &157254133
 GameObject:
   m_ObjectHideFlags: 0
@@ -1036,11 +1035,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.96673, y: 1.436557}
   m_EdgeRadius: 0
---- !u!1 &419463762 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5809012519103951443, guid: 62c84c25ad0837f48b0fe4ae4844dd10, type: 3}
-  m_PrefabInstance: {fileID: 667444093}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &424078637
 GameObject:
   m_ObjectHideFlags: 0
@@ -1910,11 +1904,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5809012519103951454, guid: 62c84c25ad0837f48b0fe4ae4844dd10, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 75.43
+      value: -7.76
       objectReference: {fileID: 0}
     - target: {fileID: 5809012519103951454, guid: 62c84c25ad0837f48b0fe4ae4844dd10, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.05
+      value: -4.02
       objectReference: {fileID: 0}
     - target: {fileID: 5809012519103951454, guid: 62c84c25ad0837f48b0fe4ae4844dd10, type: 3}
       propertyPath: m_LocalPosition.z
