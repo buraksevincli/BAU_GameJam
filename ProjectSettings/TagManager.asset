@@ -12,6 +12,7 @@ TagManager:
   - FxTemporaire
   - Bubble
   - Boss
+  - BossArea
   layers:
   - Default
   - TransparentFX

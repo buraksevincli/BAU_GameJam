@@ -14,6 +14,15 @@ public class SceneManager : MonoBehaviour
     [SerializeField] private GameObject _volumeBarDeactive;
     [SerializeField] private GameObject _eminMisin;
 
+    string currentScene;
+
+
+    private void Awake()
+    {
+        currentScene = PlayerPrefs.GetString("currentScene", currentScene);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(currentScene);
+    }
+
     public void StartGame()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("HomeScene");
@@ -26,6 +35,9 @@ public class SceneManager : MonoBehaviour
 
     public void Exit()
     {
+        currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        PlayerPrefs.SetString("currentScene", currentScene);
+        PlayerPrefs.Save();
         Application.Quit();
     }
 
