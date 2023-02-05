@@ -63,6 +63,11 @@ public class SceneManager : MonoBehaviour
     public void ResetButon()
     {
         _eminMisin.SetActive(true);
+        
+    }
+
+    public void Evet()
+    {
         currentScene = "HomeScene";
         PlayerPrefs.SetString("currentScene", currentScene);
         PlayerPrefs.Save();
