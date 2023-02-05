@@ -97,6 +97,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnParticleCollision(GameObject other)
+    {
+        isDead = true;
+    }
+
     private void FixedUpdate()
     {
         _rb2d.velocity = new Vector2(_currentSpeed * moveDirection, _rb2d.velocity.y);
