@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     bool melee = false;
     public static bool canMelee = true;
 
-    bool isDead = false;
+    public static bool isDead = false;
 
     Rigidbody2D _rb2d;
     Animator _anim;
