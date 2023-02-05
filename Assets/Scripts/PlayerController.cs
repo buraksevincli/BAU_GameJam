@@ -66,6 +66,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
+            AudioSource.PlayClipAtPoint(SoundManager.Instance.audio[0],gameObject.transform.position);
             grounded = true;
             instantiatedPof = Instantiate(pofEffect, new Vector3(transform.position.x, transform.position.y - 1, transform.position.z), Quaternion.identity);
             Destroy(instantiatedPof, 0.5f);
@@ -241,7 +242,7 @@ public class PlayerController : MonoBehaviour
         bossHealthBar.value = Boss.bossHealth;
 
     }
-    //Eðer karakter kayarken kafasýnýn üstünden geçen bir þeye ölüyorsa karakterin box collider ý için slide fonksiyonlarýnýn içine scale set edilecek.
+    //Eï¿½er karakter kayarken kafasï¿½nï¿½n ï¿½stï¿½nden geï¿½en bir ï¿½eye ï¿½lï¿½yorsa karakterin box collider ï¿½ iï¿½in slide fonksiyonlarï¿½nï¿½n iï¿½ine scale set edilecek.
     IEnumerator SlideDelayRight()
     {
         if (!slide)
